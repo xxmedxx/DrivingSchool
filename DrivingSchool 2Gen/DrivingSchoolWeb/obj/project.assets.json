@@ -4746,6 +4746,16 @@
         "runtime": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
+      },
+      "DrivingSchoolDB/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/DrivingSchoolDB.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DrivingSchoolDB.dll": {}
+        }
       }
     }
   },
@@ -12524,10 +12534,16 @@
         "windowsazure.storage.8.1.4.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
+    },
+    "DrivingSchoolDB/1.0.0": {
+      "type": "project",
+      "path": "../DrivingSchoolDB/DrivingSchoolDB.csproj",
+      "msbuildProject": "../DrivingSchoolDB/DrivingSchoolDB.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "DrivingSchoolDB >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0"
     ]
@@ -12564,7 +12580,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\mohamed\\Documents\\GitHub\\DrivingSchool\\DrivingSchool 2Gen\\DrivingSchoolDB\\DrivingSchoolDB.csproj": {
+              "projectPath": "C:\\Users\\mohamed\\Documents\\GitHub\\DrivingSchool\\DrivingSchool 2Gen\\DrivingSchoolDB\\DrivingSchoolDB.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

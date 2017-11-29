@@ -1,6 +1,6 @@
 ﻿namespace DrivingSchoolDB
 {
-    class TestLine
+    public class TestLine
     {
     }
 }

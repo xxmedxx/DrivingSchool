@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using DrivingSchoolDB;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace DrivingSchoolWeb
 {
@@ -22,6 +25,7 @@ namespace DrivingSchoolWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContext<DrivingSchoolDbContext>(o => o.UseSqlServer("DrivingSchoolDev"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,6 +35,7 @@ namespace DrivingSchoolWeb
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
+
             }
             else
             {

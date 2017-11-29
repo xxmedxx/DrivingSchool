@@ -1,6 +1,6 @@
 ﻿namespace DrivingSchoolDB
 {
-    class Exam
+    public class Exam
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace DrivingSchoolDB
 {
-    class Question
+    public class Question
     {
     }
 }
