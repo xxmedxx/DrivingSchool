@@ -1,0 +1,15 @@
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\DrivingSchoolDB.deps.json
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\DrivingSchoolDB.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\DrivingSchoolDB.pdb
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\Microsoft.EntityFrameworkCore.xml
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.xml
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.csprojResolveAssemblyReference.cache
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.csproj.CoreCompileInputs.cache
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.AssemblyInfoInputs.cache
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.AssemblyInfo.cs
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.pdb

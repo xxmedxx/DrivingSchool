@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DrivingSchoolDB
+﻿namespace DrivingSchoolDB
 {
     public class Serie
     {
