@@ -12,3 +12,4 @@ C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchool
 C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.AssemblyInfo.cs
 C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.dll
 C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.pdb
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.csprojResolveAssemblyReference.cache

@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using DrivingSchoolDB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Identity;
 
 namespace DrivingSchoolWeb
 {
@@ -24,8 +25,15 @@ namespace DrivingSchoolWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionstring = Configuration.GetConnectionString("DrivingSchoolDev");
+            services.AddDbContext<DrivingSchoolDbContext>(options => options.UseSqlServer(connectionstring));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<DrivingSchoolDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddMvc();
-            services.AddDbContext<DrivingSchoolDbContext>(o => o.UseSqlServer("DrivingSchoolDev"));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,8 +42,8 @@ namespace DrivingSchoolWeb
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
                 app.UseBrowserLink();
-
             }
             else
             {
@@ -43,6 +51,10 @@ namespace DrivingSchoolWeb
             }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
+
+            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
             app.UseMvc(routes =>
             {

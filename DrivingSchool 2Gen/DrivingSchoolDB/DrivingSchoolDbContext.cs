@@ -5,8 +5,13 @@ namespace DrivingSchoolDB
 {
     public class DrivingSchoolDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DrivingSchoolDbContext(DbContextOptions options) : base(options)
+        public DrivingSchoolDbContext(DbContextOptions<DrivingSchoolDbContext> options) : base(options)
         {
+
         }
+
+        public DbSet<Serie> Series { get; set; }
+        public DbSet<Question> Questions { get; set; }  
+
     }
 }
