@@ -13,3 +13,7 @@ C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchool
 C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.dll
 C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.pdb
 C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\obj\Debug\netcoreapp2.0\DrivingSchoolDB.csprojResolveAssemblyReference.cache
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\Microsoft.EntityFrameworkCore.Relational.xml
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolDB\bin\Debug\netcoreapp2.0\Microsoft.EntityFrameworkCore.SqlServer.xml

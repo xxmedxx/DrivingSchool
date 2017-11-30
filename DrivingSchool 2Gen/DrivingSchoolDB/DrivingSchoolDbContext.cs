@@ -10,8 +10,8 @@ namespace DrivingSchoolDB
 
         }
 
-        public DbSet<Serie> Series { get; set; }
-        public DbSet<Question> Questions { get; set; }  
+        public virtual DbSet<Serie> Series { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }  
 
     }
 }
