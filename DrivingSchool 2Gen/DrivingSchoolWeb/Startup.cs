@@ -10,6 +10,7 @@ using DrivingSchoolDB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity;
+using DBManager;
 
 namespace DrivingSchoolWeb
 {
@@ -27,6 +28,8 @@ namespace DrivingSchoolWeb
         {
             var connectionstring = Configuration.GetConnectionString("DrivingSchoolDev");
             services.AddDbContext<DrivingSchoolDbContext>(options => options.UseSqlServer(connectionstring));
+
+            services.AddScoped<SeriesManager>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<DrivingSchoolDbContext>()

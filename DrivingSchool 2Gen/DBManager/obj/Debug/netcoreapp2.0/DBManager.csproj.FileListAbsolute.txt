@@ -1,0 +1,13 @@
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\obj\Debug\netcoreapp2.0\DBManager.csprojResolveAssemblyReference.cache
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\obj\Debug\netcoreapp2.0\DBManager.csproj.CoreCompileInputs.cache
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\obj\Debug\netcoreapp2.0\DBManager.AssemblyInfoInputs.cache
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\obj\Debug\netcoreapp2.0\DBManager.AssemblyInfo.cs
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\bin\Debug\netcoreapp2.0\DBManager.deps.json
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\bin\Debug\netcoreapp2.0\DBManager.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\bin\Debug\netcoreapp2.0\DrivingSchoolDB.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\bin\Debug\netcoreapp2.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\bin\Debug\netcoreapp2.0\DrivingSchoolDB.pdb
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\bin\Debug\netcoreapp2.0\Microsoft.EntityFrameworkCore.SqlServer.xml
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\bin\Debug\netcoreapp2.0\DBManager.pdb
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\obj\Debug\netcoreapp2.0\DBManager.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DBManager\obj\Debug\netcoreapp2.0\DBManager.pdb

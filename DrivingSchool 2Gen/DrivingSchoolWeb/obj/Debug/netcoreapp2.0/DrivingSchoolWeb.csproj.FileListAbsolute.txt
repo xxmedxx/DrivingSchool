@@ -11,3 +11,5 @@ C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchool
 C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolWeb\obj\Debug\netcoreapp2.0\DrivingSchoolWeb.pdb
 C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolWeb\bin\Debug\netcoreapp2.0\DrivingSchoolDB.dll
 C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolWeb\bin\Debug\netcoreapp2.0\DrivingSchoolDB.pdb
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolWeb\bin\Debug\netcoreapp2.0\DBManager.dll
+C:\Users\mohamed\Documents\GitHub\DrivingSchool\DrivingSchool 2Gen\DrivingSchoolWeb\bin\Debug\netcoreapp2.0\DBManager.pdb
