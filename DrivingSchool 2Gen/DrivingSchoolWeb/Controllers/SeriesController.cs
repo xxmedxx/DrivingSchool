@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DBManager;
 using Microsoft.AspNetCore.Mvc;
-using DBManager;
 
 namespace DrivingSchoolWeb.Controllers
 {
     public class SeriesController : Controller
     {
-        SeriesManager _Series;
+        ISeriesManager _Series;
         public SeriesController(SeriesManager series)
         {
             _Series = series;

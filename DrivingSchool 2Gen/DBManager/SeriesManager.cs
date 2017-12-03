@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace DBManager
 {
-    public class SeriesManager
+    public class SeriesManager : ISeriesManager
     {
         // DbContextOptions<DrivingSchoolDbContext> options;
         DrivingSchoolDbContext _Db;
@@ -19,9 +21,21 @@ namespace DBManager
         {
             return _Db.Series.ToList();
         }
+        public Task<List<Serie>> GetAllAsync()
+        {
+            return _Db.Series.ToListAsync();
+        }
+
         public Serie GetSerie(int id)
         {
             return _Db.Series.FirstOrDefault<Serie>(s => s.Id == id);
+        }
+        public async Task<Serie> GetSerieAsync(int? id)
+        {
+            if (id != null)
+                return await _Db.Series.FirstOrDefaultAsync<Serie>(s => s.Id == id);
+            else
+                return null;
         }
 
         public void AddNew(Serie s)
@@ -32,11 +46,10 @@ namespace DBManager
 
         public void Update(Serie s)
         {
-            var rc = GetSerie(s.Id);
-            if (rc != null)
+            
+            if (s != null)
             {
-                rc = s;
-                _Db.SaveChanges();
+                _Db.Update(s);
             }
         }
 
@@ -46,9 +59,16 @@ namespace DBManager
             if (rc != null)
             {
                 _Db.Series.Remove(rc);
-                _Db.SaveChanges();
             }
         }
+        public void Delete(Serie s)
+        {
+           _Db.Series.Remove(s);
+        }
 
+        public Task<int> SaveAsync()
+        {
+           return _Db.SaveChangesAsync();
+        }
     }
 }
