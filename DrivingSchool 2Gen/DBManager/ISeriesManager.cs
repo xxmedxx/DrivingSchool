@@ -15,5 +15,6 @@ namespace DBManager
         Task<List<Serie>> GetAllAsync();
         Task<Serie> GetSerieAsync(int? id);
         Task<int> SaveAsync();
+        int Save();
     }
 }

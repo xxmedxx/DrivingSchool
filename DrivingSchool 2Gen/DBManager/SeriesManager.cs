@@ -70,5 +70,10 @@ namespace DBManager
         {
            return _Db.SaveChangesAsync();
         }
+
+        public int Save()
+        {
+            return _Db.SaveChanges();
+        }
     }
 }

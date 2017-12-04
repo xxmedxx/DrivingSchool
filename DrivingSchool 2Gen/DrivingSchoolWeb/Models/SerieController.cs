@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using DBManager;
 using DrivingSchoolDB;
-using DBManager;
-using System.IO;
 using DrivingSchoolWeb.ViewModel;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DrivingSchoolWeb.Models
 {
@@ -58,22 +56,28 @@ namespace DrivingSchoolWeb.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Number,Image,MyImage")] SerieViewModel serie)
+        public IActionResult Create([Bind("Number,Image,MyImage")] SerieViewModel serie)
         {
-            if (ModelState.IsValid)
+            if (serie.MyImage.Length < 0)
+            {
+                ModelState.AddModelError("MyImage", "File size is 0.");
+                return View(serie);
+            }
+                if (ModelState.IsValid && serie.MyImage.Length > 0)
             {
                 var uploads = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images\Series"));
-                var filePath = Path.Combine(uploads, serie.MyImage.FileName + DateTime.Now.ToString("-MMddyyyyHHmmss"));
+                var fileName = DateTime.Now.ToString("-MMddyyyyHHmmss") + serie.MyImage.FileName;
+                var filePath = Path.Combine(uploads, fileName);
                 serie.MyImage.CopyTo(new FileStream(filePath, FileMode.Create));
 
                 var s = new Serie
                 {
                     Number = serie.Number,
-                    Image = serie.MyImage.FileName
+                    Image = @"images\Series\" + fileName
                 };
 
                 _Series.AddNew(s);
-                await _Series.SaveAsync();
+                _Series.Save();
                 return RedirectToAction(nameof(Index));
             }
             return View(serie);

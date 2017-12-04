@@ -6,11 +6,11 @@ namespace DrivingSchoolWeb.ViewModel
 {
     public class SerieViewModel
     {
-        [Required]
+        [Required, Display(Name = "Serie Number")]
         public String Number { get; set; }
-        [Required]
+        [Display(Name = "Image Name")]
         public String Image { get; set; }
-
+        [Required, Display(Name = "Image file")]
         public IFormFile MyImage { set; get; }
     }
 }
