@@ -56,19 +56,24 @@ namespace DrivingSchoolWeb.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Number,Image,MyImage")] SerieViewModel serie)
+        public async Task<IActionResult> Create([Bind("Number,Image,MyImage")] SerieViewModel serie)
         {
+            if (serie.MyImage == null)
+            {
+                ModelState.AddModelError("MyImage", "File is required, please upload an image.");
+                return View(serie);
+            }
             if (serie.MyImage.Length < 0)
             {
                 ModelState.AddModelError("MyImage", "File size is 0.");
                 return View(serie);
             }
-                if (ModelState.IsValid && serie.MyImage.Length > 0)
+            if (ModelState.IsValid && serie.MyImage.Length > 0)
             {
                 var uploads = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images\Series"));
-                var fileName = DateTime.Now.ToString("-MMddyyyyHHmmss") + serie.MyImage.FileName;
+                var fileName = DateTime.Now.ToString("MMddyyyyHHmmss-") + serie.MyImage.FileName;
                 var filePath = Path.Combine(uploads, fileName);
-                serie.MyImage.CopyTo(new FileStream(filePath, FileMode.Create));
+                await serie.MyImage.CopyToAsync(new FileStream(filePath, FileMode.Create));
 
                 var s = new Serie
                 {
@@ -77,7 +82,7 @@ namespace DrivingSchoolWeb.Models
                 };
 
                 _Series.AddNew(s);
-                _Series.Save();
+                await _Series.SaveAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(serie);
@@ -96,7 +101,8 @@ namespace DrivingSchoolWeb.Models
             {
                 return NotFound();
             }
-            return View(serie);
+            var s = new SerieViewModel() { Id = serie.Id, Number = serie.Number, Image = serie.Image };
+            return View(s);
         }
 
         // POST: Serie/Edit/5
@@ -104,7 +110,7 @@ namespace DrivingSchoolWeb.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Number,Image")] Serie serie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Number,Image,MyImage")] SerieViewModel serie)
         {
             if (id != serie.Id)
             {
@@ -115,7 +121,26 @@ namespace DrivingSchoolWeb.Models
             {
                 try
                 {
-                    _Series.Update(serie);
+                    string fileName = "";
+                    if (serie.MyImage != null)
+                    {
+                        var uploads = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images\Series"));
+                        fileName = DateTime.Now.ToString("MMddyyyyHHmmss-") + serie.MyImage.FileName;
+                        var filePath = Path.Combine(uploads, fileName);
+                        await serie.MyImage.CopyToAsync(new FileStream(filePath, FileMode.Create));
+                        fileName = @"images\Series\" + fileName;
+                    }
+                    else
+                    {
+                        fileName = serie.Image;
+                    }
+                    var s = new Serie()
+                    {
+                        Id = serie.Id,
+                        Number = serie.Number,
+                        Image =  fileName
+                    };
+                    _Series.Update(s);
                     await _Series.SaveAsync();
                 }
                 catch (DbUpdateConcurrencyException)
