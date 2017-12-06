@@ -41,15 +41,13 @@ namespace DBManager
         public void AddNew(Serie s)
         {
             var rc = _Db.Series.Add(s);
-            _Db.SaveChanges();
         }
 
         public void Update(Serie s)
         {
-            
             if (s != null)
             {
-                _Db.Update(s);
+                _Db.Series.Update(s);
             }
         }
 
@@ -63,12 +61,12 @@ namespace DBManager
         }
         public void Delete(Serie s)
         {
-           _Db.Series.Remove(s);
+            _Db.Series.Remove(s);
         }
 
         public Task<int> SaveAsync()
         {
-           return _Db.SaveChangesAsync();
+            return _Db.SaveChangesAsync();
         }
 
         public int Save()
