@@ -30,6 +30,7 @@ namespace DrivingSchoolWeb
             services.AddDbContext<DrivingSchoolDbContext>(options => options.UseSqlServer(connectionstring));
 
             services.AddScoped<SeriesManager>();
+            services.AddScoped<QuestionsManager>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<DrivingSchoolDbContext>()

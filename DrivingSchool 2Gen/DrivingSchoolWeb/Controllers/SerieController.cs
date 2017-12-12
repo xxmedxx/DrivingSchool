@@ -14,10 +14,12 @@ namespace DrivingSchoolWeb.Models
     public class SerieController : Controller
     {
         private readonly ISeriesManager _Series;
+        private readonly QuestionsManager _Questions;
         private readonly object _hostingEnvironment;
 
-        public SerieController(SeriesManager series, IHostingEnvironment hostingEnvironment)
+        public SerieController(SeriesManager series, IHostingEnvironment hostingEnvironment, QuestionsManager questions)
         {
+            _Questions = questions;
             _Series = series;
             _hostingEnvironment = hostingEnvironment;
         }
@@ -191,6 +193,14 @@ namespace DrivingSchoolWeb.Models
         {
             var L = await (_Series.GetAllAsync());
             return L.Any(e => e.Id == id);
+        }
+
+        // GET: Serie
+        public  IActionResult Questions(int id)
+        {
+            //return View(await _context.Series.ToListAsync());
+            ViewData["SerieId"] = id;
+            return View( _Questions.GetQuestionBySerie(id));
         }
     }
 }

@@ -29,12 +29,13 @@
                 @Html.DisplayFor(modelItem => item.Number)
             </td>
             <td>
-                <img src='@Url.Content(@item.Image)' class="img-circle" style="width:100px; height:100px" />
+                <img src='@Url.Content(@item.Image)' class="img-circle"/>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-controller="Questions" asp-action="Index" asp-route-id="@item.Id" asp-route-Serienum="@item.Number">Questions</a>
             </td>
         </tr>
 }

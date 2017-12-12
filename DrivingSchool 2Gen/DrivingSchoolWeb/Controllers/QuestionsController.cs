@@ -16,8 +16,11 @@ namespace DrivingSchoolWeb.Controllers
         }
 
         // GET: Questions
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id, string Serienum)
         {
+            ViewBag.SerieId = id;
+            ViewBag.Serienum = Serienum;
+
             return View(await _context.Questions.ToListAsync());
         }
 
@@ -40,8 +43,11 @@ namespace DrivingSchoolWeb.Controllers
         }
 
         // GET: Questions/Create
-        public IActionResult Create()
+        public IActionResult Create(int id, string Serienum)
         {
+            ViewBag.SerieId = id;
+            ViewBag.Serienum = Serienum;
+            // new Questionviewmodel
             return View();
         }
 

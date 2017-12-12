@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DBManager
 {
-    class QuestionsManager
+    public class QuestionsManager
     {
         DrivingSchoolDbContext _Db;
         public QuestionsManager(DrivingSchoolDbContext db)
@@ -35,7 +35,7 @@ namespace DBManager
 
         public IEnumerable<Question> GetQuestionBySerie(int id)
         {
-            return _Db.Questions.Where(q => q.SerieId == id);
+            return (_Db.Questions.ToListAsync()).Result.Where(q => q.SerieId == id);
         }
 
         public void AddNew(Question question)
