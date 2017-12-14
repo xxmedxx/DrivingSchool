@@ -31,9 +31,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Series" asp-action="index">Series</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Tests</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @if (!User.IsInRole("Administrator"))
+                    {
+                        <li class="navbar-right"><a asp-area="" asp-controller="Users" asp-action="Login">Login</a></li>
+                    }
                 </ul>
+
             </div>
         </div>
     </nav>
