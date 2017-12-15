@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DrivingSchoolWeb.ViewModel;
 using DBManager;
+using System.IO;
+using System;
 
 namespace DrivingSchoolWeb.Controllers
 {
@@ -20,11 +22,11 @@ namespace DrivingSchoolWeb.Controllers
         }
 
         // GET: Questions
-        public  IActionResult Index(int id, string Serienum)
+        public IActionResult Index(int id, string Serienum)
         {
             ViewBag.SerieId = id;
             ViewBag.Serienum = Serienum;
-            return View( _Questions.GetAllAsync().Result.Select(Mapper.Map<Question, QuestionViewModel>));
+            return View(_Questions.GetAllAsync().Result.Select(Mapper.Map<Question, QuestionViewModel>));
         }
 
         // GET: Questions/Details/5
@@ -63,14 +65,24 @@ namespace DrivingSchoolWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                var uploads = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images\Questions"));
+
+                var Imagefile = DateTime.Now.ToString("MMddyyyyHHmmss-") + question.MyImage.FileName;
+                var filePath = Path.Combine(uploads, Imagefile);
+                await question.MyImage.CopyToAsync(new FileStream(filePath, FileMode.Create));
+
+                var Audiofile = DateTime.Now.ToString("MMddyyyyHHmmss-") + question.MyAudio.FileName;
+                filePath = Path.Combine(uploads, Audiofile);
+                await question.MyAudio.CopyToAsync(new FileStream(filePath, FileMode.Create));
+
                 Question Q = new Question
                 {
                     Name = question.Name,
                     SerieId = question.SerieId,
-                    Image = question.MyImage.FileName,
-                    Audio = question.MyAudio.FileName,
+                    Image = @"images\Questions\Image\" + Imagefile,
+                    Audio = @"images\Questions\Audio\" + Audiofile,
                     Answeres = question.Answeres,
-                    CorrectAnswer = question.CorrectAnswer                    
+                    CorrectAnswer = question.CorrectAnswer
                 };
                 await _Questions.AddNewAsync(Q);
                 await _Questions.SaveAsync();
@@ -80,14 +92,15 @@ namespace DrivingSchoolWeb.Controllers
         }
 
         // GET: Questions/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int SerieNum)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var question = await _context.Questions.SingleOrDefaultAsync(m => m.Id == id);
+            var question = await _Questions.GetQuestionAsync((int)id,SerieNum);
+
             if (question == null)
             {
                 return NotFound();

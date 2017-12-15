@@ -29,9 +29,9 @@ namespace DBManager
         {
             return _Db.Questions.FirstOrDefault(q => q.Id == id);
         }
-        public Task<Question> GetQuestionAsync(int id)
+        public Task<Question> GetQuestionAsync(int id, int SerieNum)
         {
-            return _Db.Questions.FirstOrDefaultAsync(q => q.Id == id);
+            return _Db.Questions.FirstOrDefaultAsync(m => m.Id == id && m.SerieId == SerieNum);
         }
 
         public IEnumerable<Question> GetQuestionBySerie(int id)

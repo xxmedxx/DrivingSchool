@@ -20,7 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\Questions\" />
+    <Folder Include="wwwroot\images\Questions\Image\" />
+    <Folder Include="wwwroot\images\Questions\Audio\" />
     <Folder Include="wwwroot\images\Series\" />
   </ItemGroup>
 
