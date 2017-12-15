@@ -3,25 +3,28 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using DrivingSchoolWeb.ViewModel;
+using DBManager;
 
 namespace DrivingSchoolWeb.Controllers
 {
     public class QuestionsController : Controller
     {
         private readonly DrivingSchoolDbContext _context;
+        private readonly QuestionsManager _Questions;
 
-        public QuestionsController(DrivingSchoolDbContext context)
+        public QuestionsController(QuestionsManager questions)
         {
-            _context = context;
+            _Questions = questions;
         }
 
         // GET: Questions
-        public async Task<IActionResult> Index(int id, string Serienum)
+        public  IActionResult Index(int id, string Serienum)
         {
             ViewBag.SerieId = id;
             ViewBag.Serienum = Serienum;
-
-            return View(await _context.Questions.ToListAsync());
+            return View( _Questions.GetAllAsync().Result.Select(Mapper.Map<Question, QuestionViewModel>));
         }
 
         // GET: Questions/Details/5
@@ -56,12 +59,21 @@ namespace DrivingSchoolWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Audio,Image,Answeres,CorrectAnswer,SerieId")] Question question)
+        public async Task<IActionResult> Create([Bind("Id,Name,MyAudio,MyImage,Answeres,CorrectAnswer,SerieId")] QuestionCreateViewModel question)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(question);
-                await _context.SaveChangesAsync();
+                Question Q = new Question
+                {
+                    Name = question.Name,
+                    SerieId = question.SerieId,
+                    Image = question.MyImage.FileName,
+                    Audio = question.MyAudio.FileName,
+                    Answeres = question.Answeres,
+                    CorrectAnswer = question.CorrectAnswer                    
+                };
+                await _Questions.AddNewAsync(Q);
+                await _Questions.SaveAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(question);

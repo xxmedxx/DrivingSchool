@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace DBManager
 {
@@ -38,9 +39,13 @@ namespace DBManager
             return (_Db.Questions.ToListAsync()).Result.Where(q => q.SerieId == id);
         }
 
-        public void AddNew(Question question)
+        public Task<EntityEntry<Question>> AddNewAsync(Question question)
         {
-            _Db.Questions.Add(question);
+           return _Db.Questions.AddAsync(question);
+        }
+        public EntityEntry<Question> AddNew(Question question)
+        {
+            return _Db.Questions.Add(question);
         }
         public void AddNewAsynk(Question question)
         {

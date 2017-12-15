@@ -9,10 +9,10 @@ namespace DrivingSchoolWeb.ViewModel
         public int Id { get; set; }
 
         [Required, Display(Name = "Serie Number")]
-        public String Number { get; set; }
+        public string Number { get; set; }
 
         [Display(Name = "Image Name")]
-        public String Image { get; set; }
+        public string Image { get; set; }
 
         [Display(Name = "Image file")]
         public IFormFile MyImage { set; get; }

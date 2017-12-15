@@ -1,4 +1,5 @@
-﻿using DBManager;
+﻿using AutoMapper;
+using DBManager;
 using DrivingSchoolDB;
 using DrivingSchoolWeb.ViewModel;
 using Microsoft.AspNetCore.Hosting;
@@ -24,10 +25,11 @@ namespace DrivingSchoolWeb.Models
             _hostingEnvironment = hostingEnvironment;
         }
         // GET: Serie
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             //return View(await _context.Series.ToListAsync());
-            return View(await _Series.GetAllAsync());
+            //var x = AutoMapper.Mapper.Map< List<Serie>, >
+            return View( _Series.GetAllAsync().Result.Select(Mapper.Map<Serie, SerieViewModel>));
         }
 
         // GET: Serie/Details/5
