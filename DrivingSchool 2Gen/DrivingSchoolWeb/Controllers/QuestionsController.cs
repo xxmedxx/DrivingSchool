@@ -3,25 +3,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using DrivingSchoolWeb.ViewModel;
+using DBManager;
+using System.IO;
+using System;
 
 namespace DrivingSchoolWeb.Controllers
 {
     public class QuestionsController : Controller
     {
         private readonly DrivingSchoolDbContext _context;
+        private readonly QuestionsManager _Questions;
 
-        public QuestionsController(DrivingSchoolDbContext context)
+        public QuestionsController(QuestionsManager questions)
         {
-            _context = context;
+            _Questions = questions;
         }
 
         // GET: Questions
-        public async Task<IActionResult> Index(int id, string Serienum)
+        public IActionResult Index(int id, string Serienum)
         {
             ViewBag.SerieId = id;
             ViewBag.Serienum = Serienum;
-
-            return View(await _context.Questions.ToListAsync());
+            return View(_Questions.GetAllAsync().Result.Select(Mapper.Map<Question, QuestionViewModel>));
         }
 
         // GET: Questions/Details/5
@@ -56,26 +61,46 @@ namespace DrivingSchoolWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Audio,Image,Answeres,CorrectAnswer,SerieId")] Question question)
+        public async Task<IActionResult> Create([Bind("Id,Name,MyAudio,MyImage,Answeres,CorrectAnswer,SerieId")] QuestionCreateViewModel question)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(question);
-                await _context.SaveChangesAsync();
+                var uploads = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images\Questions"));
+
+                var Imagefile = DateTime.Now.ToString("MMddyyyyHHmmss-") + question.MyImage.FileName;
+                var filePath = Path.Combine(uploads, Imagefile);
+                await question.MyImage.CopyToAsync(new FileStream(filePath, FileMode.Create));
+
+                var Audiofile = DateTime.Now.ToString("MMddyyyyHHmmss-") + question.MyAudio.FileName;
+                filePath = Path.Combine(uploads, Audiofile);
+                await question.MyAudio.CopyToAsync(new FileStream(filePath, FileMode.Create));
+
+                Question Q = new Question
+                {
+                    Name = question.Name,
+                    SerieId = question.SerieId,
+                    Image = @"images\Questions\Image\" + Imagefile,
+                    Audio = @"images\Questions\Audio\" + Audiofile,
+                    Answeres = question.Answeres,
+                    CorrectAnswer = question.CorrectAnswer
+                };
+                await _Questions.AddNewAsync(Q);
+                await _Questions.SaveAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(question);
         }
 
         // GET: Questions/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int SerieNum)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var question = await _context.Questions.SingleOrDefaultAsync(m => m.Id == id);
+            var question = await _Questions.GetQuestionAsync((int)id,SerieNum);
+
             if (question == null)
             {
                 return NotFound();

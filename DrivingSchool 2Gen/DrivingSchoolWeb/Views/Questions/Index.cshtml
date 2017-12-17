@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DrivingSchoolDB.Question>
+﻿@model IEnumerable<DrivingSchoolWeb.ViewModel.QuestionViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -50,7 +50,7 @@
                 @Html.DisplayFor(modelItem => item.CorrectAnswer)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id" asp-route-SerieNum="@item.SerieId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>

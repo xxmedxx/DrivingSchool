@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DBManager;
+using DrivingSchoolDB;
+using DrivingSchoolWeb.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using DrivingSchoolDB;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Identity;
-using DBManager;
 
 namespace DrivingSchoolWeb
 {
@@ -26,6 +22,7 @@ namespace DrivingSchoolWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AutoMapper.Mapper.Initialize(c => c.AddProfile<AutoMapperProfile>());
             var connectionstring = Configuration.GetConnectionString("DrivingSchoolDev");
             services.AddDbContext<DrivingSchoolDbContext>(options => options.UseSqlServer(connectionstring));
 
