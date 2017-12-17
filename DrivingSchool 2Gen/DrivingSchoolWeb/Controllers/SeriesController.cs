@@ -26,7 +26,7 @@ namespace DrivingSchoolWeb.Models
         // GET: Serie
         public async Task<IActionResult> Index()
         {
-            //return View(await _context.Series.ToListAsync());
+            _Series.GetAll().Select(s => new { image = s.Image, number = s.Number});
             return View(await _Series.GetAllAsync());
         }
 
