@@ -29,7 +29,7 @@ namespace DrivingSchoolWeb.Models
         {
 <<<<<<< HEAD
             _Series.GetAll().Select(s => new { image = s.Image, number = s.Number});
-            return View(await _Series.GetAllAsync());
+           // return View(await _Series.GetAllAsync());
 =======
             //return View(await _context.Series.ToListAsync());
             //var x = AutoMapper.Mapper.Map< List<Serie>, >
