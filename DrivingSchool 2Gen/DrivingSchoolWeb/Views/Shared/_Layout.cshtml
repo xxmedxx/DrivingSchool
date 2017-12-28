@@ -35,10 +35,25 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Tests</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    @if (!User.IsInRole("Administrator"))
+                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li class="navbar-right"><a asp-area="" asp-controller="Users" asp-action="Login">Login</a></li>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <li class="navbar-right"><a asp-area="" asp-controller="Accounts" asp-action="Admins">Welcome Admin</a></li>
+                            <li><a asp-area="" asp-controller="Accounts" asp-action="LogOut">Log out</a></li>
+                        }
+                        else
+                        {
+                            <li class="navbar-right"><a asp-area="" asp-controller="Accounts" asp-action="Users">Welcome @User.Identity.Name</a></li>
+                            <li><a asp-area="" asp-controller="Accounts" asp-action="LogOut">Log out</a></li>
+                        }
                     }
+                    else
+                    {
+                        <li class="navbar-right"><a asp-area="" asp-controller="Accounts" asp-action="Login">Log In</a></li>
+                        <li><a asp-area="" asp-controller="Accounts" asp-action="Register">Register</a></li>
+                    }
+                   
                 </ul>
 
             </div>

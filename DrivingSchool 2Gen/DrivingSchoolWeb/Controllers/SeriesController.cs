@@ -27,14 +27,9 @@ namespace DrivingSchoolWeb.Models
         // GET: Serie
         public IActionResult Index()
         {
-<<<<<<< HEAD
-            _Series.GetAll().Select(s => new { image = s.Image, number = s.Number});
-            return View(await _Series.GetAllAsync());
-=======
             //return View(await _context.Series.ToListAsync());
             //var x = AutoMapper.Mapper.Map< List<Serie>, >
             return View( _Series.GetAllAsync().Result.Select(Mapper.Map<Serie, SerieViewModel>));
->>>>>>> 9c04603c9fbfc848b753941dc958f395f37020d9
         }
 
         // GET: Serie/Details/5
