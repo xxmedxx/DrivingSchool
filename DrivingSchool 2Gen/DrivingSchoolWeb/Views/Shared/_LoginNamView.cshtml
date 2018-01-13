@@ -1,0 +1,19 @@
+﻿@Model UserNameViewmodel
+@if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("Administrator"))
+    {
+        <li class="navbar-right"><a asp-area="" asp-controller="Accounts" asp-action="Admins">Welcome Admin</a></li>
+                            <li><a asp-area="" asp-controller="Accounts" asp-action="LogOut">Log out</a></li>
+    }
+    else
+    {
+        <li class="navbar-right"><a asp-area="" asp-controller="Accounts" asp-action="Users">Welcome @{var u = new IdentityUser().UserName}</a></li>
+                            <li><a asp-area="" asp-controller="Accounts" asp-action="LogOut">Log out</a></li>
+    }
+}
+else
+{
+    <li class="navbar-right"><a asp-area="" asp-controller="Accounts" asp-action="Login">Log In</a></li>
+                        <li><a asp-area="" asp-controller="Accounts" asp-action="Register">Register</a></li>
+}
