@@ -30,15 +30,14 @@ namespace DrivingSchoolWeb.Controllers
         }
 
         // GET: Questions/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id,int SerieId)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var question = await _context.Questions
-                .SingleOrDefaultAsync(m => m.Id == id);
+            var question = await (_Questions.GetQuestionAsync((int)id,SerieId));
             if (question == null)
             {
                 return NotFound();
